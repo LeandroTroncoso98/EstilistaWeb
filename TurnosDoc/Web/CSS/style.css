@@ -1,0 +1,125 @@
+﻿:root {
+    --primario: #C88D57;
+    --secundario: #F8D3BE;
+    --gris: #FAF9F9;
+    --coralNegro: #5E6472;
+    --negro: #000000;
+    --fuentePrincipal: 'Montserrat', sans-serif;
+    --fuenteTitulo: 'Dancing Script', cursive;
+}
+body{
+    background: var(--gris);
+}
+.bg-banner {
+    background-image: url('../img/bannerxs.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height:400px;
+    
+}
+@media (min-width:576px){
+    .bg-banner {
+        background-image:url('../img/bannerxll.png');
+        background-color: var(--primario);
+        height:300px;
+    }
+    
+}
+.label-sesion{
+    font-family:var(--fuentePrincipal);
+    font-weight:300;
+    color:var(--primario);
+}
+.bg-footer{
+    background-color: var(--coralNegro);
+    padding:30px;
+}
+
+/*h1,h3{
+    font-family:var(--fuenteTitulo);
+    color:var(--gris);
+    font-weight:700;
+    margin:0 auto;
+}*/
+h2 {
+    font-family: var(--fuentePrincipal);
+    color: var(--primario);
+    font-weight: 900;
+    margin: 0 auto;
+}
+h3{
+    font-family: var(--fuentePrincipal);
+    color:var(--primario);
+    font-weight:700;
+}
+h1{
+    font-family: var(--fuentePrincipal);
+    font-weight: 900;
+    color: var(--gris);
+}
+.subtittle{
+    font-family: var(--fuenteTitulo);
+    font-weight:700;
+    color:var(--gris);
+}
+.text-letra{
+    font-family: var(--fuentePrincipal);
+    font-weight:400;
+    color:var(--coralNegro);
+
+}
+
+.bg-section{
+    background-color: var(--secundario);
+}
+.btn-skin{
+    background-color: var(--gris);
+    color:var(--primario);
+    text-transform: uppercase;
+    text-align:center;   
+    font-weight:900;
+    font-family:var(--fuentePrincipal);
+    border: 2px solid var(--primario);
+    border-radius:initial;
+    transition: background-color .3s ease-out;
+    padding: 10px;
+}
+.btn-skin:hover{
+    background-color:var(--primario);
+    color:var(--gris);
+    cursor:pointer;
+}
+
+.btn-footer {
+    background-color: var(--primario);
+    color: var(--gris);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    font-family: var(--fuentePrincipal);
+    /*border: 2px solid var(--primario);*/
+    border-radius: initial;
+    transition: background-color .3s ease-out;
+    padding: 10px;
+}
+.btn-footer:hover{
+    background-color:var(--coralNegro);
+    color:var(--primario);
+    border:none;
+
+}
+.bg-headerInterno{
+    background-color: var(--coralNegro);
+    padding:20px;
+}
+
+.tittle-inter{
+
+    font-family:var(--fuentePrincipal);
+    font-weight:900;
+}
+@media (min-width:576px) {
+    .mr-2 {
+        margin-right: 2px;
+    }
+}
