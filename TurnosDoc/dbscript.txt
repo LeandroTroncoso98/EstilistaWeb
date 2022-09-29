@@ -1,0 +1,240 @@
+USE [TURNOSDOC_DB]
+GO
+/****** Object:  Table [dbo].[ActivoPaciente]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ActivoPaciente](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Activo] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_ActivoPaciente] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Hora]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Hora](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Hora] [time](1) NOT NULL,
+ CONSTRAINT [PK_Hora] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Paciente]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Paciente](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NombreCompleto] [nvarchar](100) NOT NULL,
+	[IdSexo] [int] NOT NULL,
+	[Edad] [int] NOT NULL,
+	[Celular] [nvarchar](50) NOT NULL,
+	[Email] [nvarchar](100) NOT NULL,
+	[IdActivoPaciente] [int] NULL,
+ CONSTRAINT [PK_Paciente] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sexo]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sexo](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Sexo] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Sexo] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tratamiento]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tratamiento](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Tratamiento] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Turno]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Turno](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [nvarchar](300) NULL,
+	[Fecha] [date] NOT NULL,
+	[IdHora] [int] NOT NULL,
+	[IdPaciente] [int] NOT NULL,
+	[IdTratamiento] [int] NOT NULL,
+ CONSTRAINT [PK_Turno] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuario]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuario](
+	[Id] [int] IDENTITY(1000,1) NOT NULL,
+	[Usuario] [varchar](50) NULL,
+	[Contrasenia] [varbinary](500) NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Paciente]  WITH CHECK ADD  CONSTRAINT [FK_Paciente_Sexo] FOREIGN KEY([IdSexo])
+REFERENCES [dbo].[Sexo] ([Id])
+GO
+ALTER TABLE [dbo].[Paciente] CHECK CONSTRAINT [FK_Paciente_Sexo]
+GO
+ALTER TABLE [dbo].[Turno]  WITH CHECK ADD  CONSTRAINT [FK_Turno_Hora] FOREIGN KEY([IdHora])
+REFERENCES [dbo].[Hora] ([Id])
+GO
+ALTER TABLE [dbo].[Turno] CHECK CONSTRAINT [FK_Turno_Hora]
+GO
+ALTER TABLE [dbo].[Turno]  WITH CHECK ADD  CONSTRAINT [FK_Turno_Paciente] FOREIGN KEY([IdPaciente])
+REFERENCES [dbo].[Paciente] ([Id])
+GO
+ALTER TABLE [dbo].[Turno] CHECK CONSTRAINT [FK_Turno_Paciente]
+GO
+ALTER TABLE [dbo].[Turno]  WITH CHECK ADD  CONSTRAINT [FK_Turno_Tratamiento] FOREIGN KEY([IdTratamiento])
+REFERENCES [dbo].[Tratamiento] ([Id])
+GO
+ALTER TABLE [dbo].[Turno] CHECK CONSTRAINT [FK_Turno_Tratamiento]
+GO
+/****** Object:  StoredProcedure [dbo].[storedAgregarUsuario]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create procedure [dbo].[storedAgregarUsuario]
+@Usuario varchar(50),
+@Contrasenia varchar(50),
+@Patron varchar(50)
+as
+begin
+Insert into Usuario(Usuario,Contrasenia) values (@Usuario,ENCRYPTBYPASSPHRASE(@Patron,@Contrasenia))
+end
+GO
+/****** Object:  StoredProcedure [dbo].[storedCrearUsuario]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create procedure [dbo].[storedCrearUsuario]
+@nombreCompleto nvarchar(100),
+@idSexo int,
+@edad int,
+@celular nvarchar(50),
+@email nvarchar(100)
+as
+insert into Paciente values (@nombreCompleto,@idSexo,@edad,@celular,@email)
+GO
+/****** Object:  StoredProcedure [dbo].[storedEliminarPaciente]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[storedEliminarPaciente]
+@id int
+as
+delete from Paciente where id = @id
+GO
+/****** Object:  StoredProcedure [dbo].[storedGenero]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[storedGenero]
+as
+select Id , Sexo
+from Sexo
+GO
+/****** Object:  StoredProcedure [dbo].[storedListar]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create procedure [dbo].[storedListar] 
+as
+Declare @FechaInicial as date = getdate()
+Declare @FechaFinal as date = '2100-12-31'
+select T.Id,T.IdPaciente, P.NombreCompleto Nombre, T.Descripcion, T.Fecha,T.IdHora, h.Hora Hora 
+from Paciente P, Turno T, Hora H
+where T.IdPaciente = P.Id and T.IdHora = H.Id and t.Fecha between @FechaInicial and @FechaFinal
+GO
+/****** Object:  StoredProcedure [dbo].[storedListarPaciente]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[storedListarPaciente]
+as
+Select p.NombreCompleto nombre, Celular, Edad, Email,p.Id, p.IdSexo, s.Sexo
+From Paciente p, Sexo s
+where p.IdSexo = s.Id
+GO
+/****** Object:  StoredProcedure [dbo].[storedModificarPaciente]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create procedure [dbo].[storedModificarPaciente]
+@id int,
+@nombrecompleto nvarchar(100),
+@idSexo int,
+@edad int,
+@celular nvarchar(50),
+@email nvarchar(100)
+as
+update Paciente set NombreCompleto=@nombrecompleto,IdSexo=@idSexo,Edad=@edad,Celular=@celular,Email=@email
+where Id = @id
+GO
+/****** Object:  StoredProcedure [dbo].[StoredSeleccionarCliente]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[StoredSeleccionarCliente]
+@id int
+as
+select p.Id, p.NombreCompleto, p.Edad, p.Email, p.Celular, p.IdSexo, S.Sexo
+from Paciente P, Sexo S
+where p.IdSexo = s.Id and P.Id = @id
+GO
+/****** Object:  StoredProcedure [dbo].[storedValidarUsuario]    Script Date: 29/9/2022 13:40:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create procedure [dbo].[storedValidarUsuario]
+@Usuario varchar(50),
+@Contrasenia varchar(50),
+@Patron varchar(50)
+as
+begin
+select * from Usuario where Usuario=@Usuario and CONVERT(varchar(50),DECRYPTBYPASSPHRASE(@Patron,Contrasenia)) = @Contrasenia
+END
+GO

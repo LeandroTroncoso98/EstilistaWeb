@@ -11,7 +11,7 @@
                         <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                         <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
                         <asp:BoundField HeaderText="Horario" DataField="Hora" />
-                        <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver" ControlStyle-CssClass="text-decoration-none btn btn-dark" />
+                        <asp:CommandField HeaderText="Detalle" ShowSelectButton="true" SelectText="Ver más" ControlStyle-CssClass="text-decoration-none btn-ver" />
                     </Columns>
                 </asp:GridView>
             </div>

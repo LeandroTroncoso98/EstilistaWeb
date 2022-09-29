@@ -6,33 +6,37 @@
     --negro: #000000;
     --fuentePrincipal: 'Montserrat', sans-serif;
     --fuenteTitulo: 'Dancing Script', cursive;
+    --rojo: #E57373;
 }
-body{
+
+body {
     background: var(--gris);
 }
+
 .bg-banner {
     background-image: url('../img/bannerxs.png');
     background-repeat: no-repeat;
     background-size: 100%;
-    height:400px;
-    
+    height: 400px;
 }
-@media (min-width:576px){
+
+@media (min-width:576px) {
     .bg-banner {
-        background-image:url('../img/bannerxll.png');
+        background-image: url('../img/bannerxll.png');
         background-color: var(--primario);
-        height:300px;
+        height: 300px;
     }
-    
 }
-.label-sesion{
-    font-family:var(--fuentePrincipal);
-    font-weight:300;
-    color:var(--primario);
+
+.label-sesion {
+    font-family: var(--fuentePrincipal);
+    font-weight: 300;
+    color: var(--primario);
 }
-.bg-footer{
+
+.bg-footer {
     background-color: var(--coralNegro);
-    padding:30px;
+    padding: 30px;
 }
 
 /*h1,h3{
@@ -47,48 +51,53 @@ h2 {
     font-weight: 900;
     margin: 0 auto;
 }
-h3{
+
+h3 {
     font-family: var(--fuentePrincipal);
-    color:var(--primario);
-    font-weight:700;
+    color: var(--primario);
+    font-weight: 700;
 }
-h1{
+
+h1 {
     font-family: var(--fuentePrincipal);
     font-weight: 900;
     color: var(--gris);
 }
-.subtittle{
+
+.subtittle {
     font-family: var(--fuenteTitulo);
-    font-weight:700;
-    color:var(--gris);
+    font-weight: 700;
+    color: var(--gris);
 }
-.text-letra{
+
+.text-letra {
     font-family: var(--fuentePrincipal);
-    font-weight:400;
-    color:var(--coralNegro);
-
+    font-weight: 400;
+    color: var(--coralNegro);
 }
 
-.bg-section{
+.bg-section {
     background-color: var(--secundario);
 }
-.btn-skin{
+
+.btn-skin {
     background-color: var(--gris);
-    color:var(--primario);
+    color: var(--primario);
     text-transform: uppercase;
-    text-align:center;   
-    font-weight:900;
-    font-family:var(--fuentePrincipal);
+    text-align: center;
+    font-weight: 900;
+    font-family: var(--fuentePrincipal);
     border: 2px solid var(--primario);
-    border-radius:initial;
+    border-radius: initial;
     transition: background-color .3s ease-out;
     padding: 10px;
 }
-.btn-skin:hover{
-    background-color:var(--primario);
-    color:var(--gris);
-    cursor:pointer;
-}
+
+    .btn-skin:hover {
+        background-color: var(--primario);
+        color: var(--gris);
+        cursor: pointer;
+    }
 
 .btn-footer {
     background-color: var(--primario);
@@ -102,24 +111,59 @@ h1{
     transition: background-color .3s ease-out;
     padding: 10px;
 }
-.btn-footer:hover{
-    background-color:var(--coralNegro);
-    color:var(--primario);
-    border:none;
 
-}
-.bg-headerInterno{
+    .btn-footer:hover {
+        background-color: var(--coralNegro);
+        color: var(--primario);
+        border: none;
+    }
+
+.bg-headerInterno {
     background-color: var(--coralNegro);
-    padding:20px;
+    padding: 20px;
 }
 
-.tittle-inter{
-
-    font-family:var(--fuentePrincipal);
-    font-weight:900;
+.tittle-inter {
+    font-family: var(--fuentePrincipal);
+    font-weight: 900;
 }
+
 @media (min-width:576px) {
     .mr-2 {
         margin-right: 2px;
     }
 }
+
+.btn-ver {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: var(--fuentePrincipal);
+    font-weight: 900;
+    border: none;
+    color: var(--coralNegro);
+    transition: color .3s ease-out;
+}
+
+    .btn-ver:hover {
+        color: var(--primario);
+        cursor: pointer;
+    }
+
+.btn-eliminar {
+    background-color: var(--gris);
+    color: #e57373;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    font-family: var(--fuentePrincipal);
+    border: 2px solid var(--rojo);
+    border-radius: initial;
+    transition: background-color .3s ease-out;
+    padding: 10px;
+}
+
+    .btn-eliminar:hover {
+        background-color: var(--rojo);
+        color: var(--gris);
+        cursor: pointer;
+    }

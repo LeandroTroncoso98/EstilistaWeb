@@ -22,7 +22,8 @@ namespace Web.Paciente
 
         protected void dgvClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string id = dgvClientes.SelectedDataKey.Value.ToString();
+            Response.Redirect("ResumenDeCliente.aspx?id=" + id);
         }
 
         protected void dgvClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
