@@ -11,17 +11,8 @@ namespace Web.Administracion
 {
 
 
-    public partial class ResumenDeCliente
+    public partial class ResumenDeTurno
     {
-
-        /// <summary>
-        /// Control scriptManager.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager scriptManager;
 
         /// <summary>
         /// Control lblNombreCompleto.
@@ -76,23 +67,5 @@ namespace Web.Administracion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEditarCliente;
-
-        /// <summary>
-        /// Control updatePanel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatePanel1;
-
-        /// <summary>
-        /// Control dgvPacienteSeleccionado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvPacienteSeleccionado;
     }
 }

@@ -14,7 +14,7 @@ namespace negocio
         {
             try
             {
-                datos.storedProcedure("storedListarPaciente");
+                datos.storedProcedure("storedListarPacientesActivos");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -40,7 +40,7 @@ namespace negocio
         {
             try
             {
-                datos.storedProcedure("storedCrearUsuario");
+                datos.storedProcedure("storedCrearPaciente");
                 datos.setParameters("@nombreCompleto", paciente.NombreCompleto);
                 datos.setParameters("@idSexo", paciente.sexo.Id);
                 datos.setParameters("@edad", paciente.Edad);
@@ -89,7 +89,7 @@ namespace negocio
         {
             try
             {
-                datos.storedProcedure("storedEliminarPaciente");
+                datos.storedProcedure("storedDesactivarPaciente");
                 datos.setParameters("@id", id);
                 datos.ejecutarAccion();
 
@@ -125,5 +125,26 @@ namespace negocio
             }
 
         }
+        public List<Paciente> ListaNombresPacientes()
+        {
+            try
+            {
+                datos.storedProcedure("storedListNombrePaciente");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Paciente aux = new Paciente();
+                    aux.id = (int)datos.Lector["Id"];
+                    aux.NombreCompleto = (string)datos.Lector["NombreCompleto"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

@@ -16,8 +16,12 @@ namespace Web.Administracion
             string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
             return id;
         }
+
+        TurnoNegocio negocioTurno = new TurnoNegocio();
+        PacienteNegocio negocioPaciente = new PacienteNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             string id = TomaId();
             if (id == "")
                 Response.Redirect("ListaPacientes.aspx");
@@ -25,27 +29,38 @@ namespace Web.Administracion
             {
                 try
                 {
-                    PacienteNegocio negocio = new PacienteNegocio();
-                    dominio.Paciente aux = negocio.SelectItemFromId(id);
-                    lblNombreCompleto.Text += aux.NombreCompleto;
-                    lblEdad.Text += aux.Edad.ToString();
-                    lblEmail.Text += aux.Email;
-                    lblCelular.Text += aux.Celular;
-                    lblSexo.Text += aux.sexo.Sexualidad;
+                    
+                    dominio.Paciente aux = negocioPaciente.SelectItemFromId(id);
+                    if (!IsPostBack)
+                    {
+                        lblNombreCompleto.Text += aux.NombreCompleto;
+                        lblEdad.Text += aux.Edad.ToString();
+                        lblEmail.Text += aux.Email;
+                        lblCelular.Text += aux.Celular;
+                        lblSexo.Text += aux.sexo.Sexualidad;                      
+                    }
+                    Session.Add("listaPacienteTurnos", negocioTurno.HistPacienteDesc(id));
+                    dgvPacienteSeleccionado.DataSource = Session["listaPacienteTurnos"];
+                    dgvPacienteSeleccionado.DataBind();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw ex;
                 }
             }
         }
-
-        
-
         protected void btnEditarCliente_Click(object sender, EventArgs e)
         {
             string id = TomaId();
             Response.Redirect("FormularioPaciente.aspx?id=" + id);
         }
+
+        protected void dgvPacienteSeleccionado_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvPacienteSeleccionado.PageIndex = e.NewPageIndex;
+            dgvPacienteSeleccionado.DataBind();
+        }             
     }
+
+
 }

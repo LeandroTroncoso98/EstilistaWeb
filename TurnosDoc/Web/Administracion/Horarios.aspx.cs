@@ -13,11 +13,11 @@ namespace Web
     {
         public List<Turno> listaTurnos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
-        {
-            TurnoNegocio negocio = new TurnoNegocio();
-            Session.Add("listaTurnos", negocio.listarSP());
-            dgvHorario.DataSource = Session["listaTurnos"];
-            dgvHorario.DataBind();
+        {          
+                TurnoNegocio negocio = new TurnoNegocio();
+                Session.Add("listaTurnos", negocio.listarSP());
+                dgvHorario.DataSource = Session["listaTurnos"];
+                dgvHorario.DataBind();            
         }
 
         protected void dgvHorario_SelectedIndexChanged(object sender, EventArgs e)

@@ -5,8 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row">
-            <div class="form-outline mb-3 d-flex flex-column flex-lg-row justify-content-lg-between">
-                
+            <div class="form-outline mb-3 d-flex flex-column flex-lg-row justify-content-lg-between">                
                 <asp:LinkButton ID="btnRegresar" runat="server" CssClass="btn-skin text-decoration-none " Text="<i class='bi bi-backspace'> Regresar</i>" OnClick="btnRegresar_Click" CausesValidation="false"></asp:LinkButton>
                 <asp:LinkButton ID="btnEliminar" runat="server" Text="<i class='bi bi-person-x-fill'> Eliminar</i>" CssClass="btn-eliminar text-decoration-none mt-5 mt-lg-0" Visible="false" OnClick="btnEliminar_Click" />
             </div>
@@ -43,7 +42,6 @@
                 <div class="mb-3 ">
                     <label for="txtEmail" class="form-label">Email: </label>
                     <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control"></asp:TextBox>
-                    <asp:RequiredFieldValidator ControlToValidate="txtEmail" runat="server" ID="reqEmail" Text="* Campo obligatorio" CssClass="text-danger"></asp:RequiredFieldValidator>
                     <br />
                     <asp:RegularExpressionValidator runat="server" ID="rexEmail" ControlToValidate="txtEmail" ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" CssClass="text-danger" ErrorMessage="* Formato de mail no valido."></asp:RegularExpressionValidator>
                 </div>
