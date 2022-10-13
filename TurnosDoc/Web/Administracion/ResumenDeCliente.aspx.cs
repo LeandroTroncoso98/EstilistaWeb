@@ -11,7 +11,8 @@ namespace Web.Administracion
 {
     public partial class ResumenDeCliente : System.Web.UI.Page
     {
-        public string TomaId()
+        public bool vacio { get; set; }
+        private string TomaId()
         {
             string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
             return id;
@@ -21,27 +22,41 @@ namespace Web.Administracion
         PacienteNegocio negocioPaciente = new PacienteNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             string id = TomaId();
             if (id == "")
+            {
+
                 Response.Redirect("ListaPacientes.aspx");
+            }
             else
             {
+                
                 try
                 {
-                    
+
                     dominio.Paciente aux = negocioPaciente.SelectItemFromId(id);
-                    if (!IsPostBack)
+                    if (aux != null)
                     {
-                        lblNombreCompleto.Text += aux.NombreCompleto;
-                        lblEdad.Text += aux.Edad.ToString();
-                        lblEmail.Text += aux.Email;
-                        lblCelular.Text += aux.Celular;
-                        lblSexo.Text += aux.sexo.Sexualidad;                      
+
+                        if (!IsPostBack)
+                        {
+                            lblNombreCompleto.Text += aux.NombreCompleto;
+                            lblEdad.Text += aux.Edad.ToString();
+                            lblEmail.Text += aux.Email;
+                            lblCelular.Text += aux.Celular;
+                            lblSexo.Text += aux.sexo.Sexualidad;
+                        }
+                        dgvPacienteSeleccionado.DataSource = negocioTurno.HistPacienteDesc(id);
+                        dgvPacienteSeleccionado.DataBind();
+                        if (dgvPacienteSeleccionado.Rows.Count <= 0)
+                            vacio = true;
+                        else
+                            vacio = false;
                     }
-                    Session.Add("listaPacienteTurnos", negocioTurno.HistPacienteDesc(id));
-                    dgvPacienteSeleccionado.DataSource = Session["listaPacienteTurnos"];
-                    dgvPacienteSeleccionado.DataBind();
+                    else
+                        Response.Redirect("ListaPacientes.aspx");
+
                 }
                 catch (Exception ex)
                 {
@@ -59,7 +74,13 @@ namespace Web.Administracion
         {
             dgvPacienteSeleccionado.PageIndex = e.NewPageIndex;
             dgvPacienteSeleccionado.DataBind();
-        }             
+        }
+
+        protected void dgvPacienteSeleccionado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvPacienteSeleccionado.SelectedDataKey.Value.ToString();
+            Response.Redirect("ResumenDeTurno.aspx?id=" + id);
+        }
     }
 
 

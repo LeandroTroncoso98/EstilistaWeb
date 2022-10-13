@@ -25,6 +25,6 @@ namespace Web
         {
             Session.Remove("usuarioLog");
             Response.Redirect("~/Index.aspx");
-        }
+        }       
     }
 }

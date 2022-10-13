@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Configuration;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +22,7 @@ namespace negocio
 
         public AccesoDatos()
         {
-            connection = new SqlConnection("server=.\\SQLSERVER; database=TURNOSDOC_DB; integrated security=true");
+            connection = new SqlConnection("Data Source = SQL8001.site4now.net; Initial Catalog = db_a8e2c2_alicia; User Id = db_a8e2c2_alicia_admin; Password = Deadspace1");
             command = new SqlCommand();
         }
 

@@ -36,6 +36,7 @@ namespace negocio
                 throw ex;
             }
         }
+
         public void CrearPacienteSP(Paciente paciente)
         {
             try
@@ -143,6 +144,36 @@ namespace negocio
             catch(Exception ex)
             {
                 throw ex;
+            }
+        }
+        public List<Paciente> listaFiltrada(string nombre)
+        {
+            try
+            {
+                datos.storedProcedure("storedFiltrarPacienteActivo");
+                datos.setParameters("@nombre", nombre);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Paciente aux = new Paciente();
+                    aux.id = (int)datos.Lector["Id"];
+                    aux.NombreCompleto = (string)datos.Lector["nombre"];
+                    aux.Edad = (int)datos.Lector["Edad"];
+                    aux.Email = (string)datos.Lector["Email"];
+                    aux.Celular = (string)datos.Lector["Celular"];
+                    aux.sexo = new Sexo();
+                    aux.sexo.Id = (int)datos.Lector["IdSexo"];
+                    aux.sexo.Sexualidad = (string)datos.Lector["Sexo"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
             }
         }
 

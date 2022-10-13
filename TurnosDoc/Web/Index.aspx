@@ -12,9 +12,8 @@
                 <div class="col-12 col-lg-5 mt-5 align-self-center">
                     <h3>De que trata:</h3>
                     <p class="text-letra">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                        Tiene como objetivo eliminar el vello de nuestro cuerpo, ya sea vello facial o corporal. El tiempo medio para eliminarlo de forma eficaz se sitúa entre las 8 a 9 sesiones, pero podrá variar dependiendo de otros factores como alteraciones hormonales o la edad del paciente. Podra solicitar un turno mediante <a href="https://wa.me/5491130720970?text=Buenas%20tardes,%20quisiera%20solicitar%20un%20turno%20de%20depilaci%C3%B3n%20definitiva.%20Desde%20ya,%20Muchas%20gracias!" class="text-letra text-uppercase text-decoration-none"><i class="bi bi-whatsapp "></i> WhatsApp</a> 
                     </p>
-
                 </div>
                 <div class="col-12 col-lg-7">
                     <img class="img-fluid" alt="Imagen Depilacion Definitiva" src="img/DepilacionDef.jpg" />
@@ -30,7 +29,7 @@
                     <div class="col col-lg-5 order-lg-last align-self-center">
                         <h3>De que trata:</h3>
                         <p class="text-letra">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                            El sistema español es uno de los métodos de depilación más efectivos. Su uso disminuye la aparición paulatina del vello ya que lo extrae de raíz y mejora la textura de la piel con el paso del tiempo. Puede solicitar un turno mediante <a href="https://wa.me/5491130720970?text=Buenas%20tardes,%20quisiera%20solicitar%20un%20turno%20de%20depilaci%C3%B3n%20española.%20Desde%20ya,%20Muchas%20gracias!" class="text-letra text-uppercase text-decoration-none"><i class="bi bi-whatsapp "></i> WhatsApp</a>
                         </p>
                     </div>
                     <div class="col-12 col-lg-7 order-lg-first">

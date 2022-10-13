@@ -17,7 +17,7 @@ namespace Web.Paciente
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             try
             {
                 if (!IsPostBack)
@@ -34,14 +34,19 @@ namespace Web.Paciente
                 {
                     PacienteNegocio negocio = new PacienteNegocio();
                     dominio.Paciente seleccionado = (negocio.SelectItemFromId(id));
-                    txtId.Text = seleccionado.id.ToString();
-                    txtNombreCompleto.Text = seleccionado.NombreCompleto;
-                    txtEdad.Text = seleccionado.Edad.ToString();
-                    txtEmail.Text = seleccionado.Email;
-                    txtCelular.Text = seleccionado.Celular;
-                    ddlGenero.SelectedValue = seleccionado.sexo.Id.ToString();
-                    btnCrear.Text = "modificar";
-                    btnEliminar.Visible = true;
+                    if (seleccionado != null)
+                    {
+                        txtId.Text = seleccionado.id.ToString();
+                        txtNombreCompleto.Text = seleccionado.NombreCompleto;
+                        txtEdad.Text = seleccionado.Edad.ToString();
+                        txtEmail.Text = seleccionado.Email;
+                        txtCelular.Text = seleccionado.Celular;
+                        ddlGenero.SelectedValue = seleccionado.sexo.Id.ToString();
+                        btnCrear.Text = "modificar";
+                        btnEliminar.Visible = true;
+                    }
+                    else
+                        Response.Redirect("Horarios.aspx",true);
                 }
             }
             catch (Exception ex)
@@ -98,7 +103,7 @@ namespace Web.Paciente
         {
             string id = TomaId();
             if (id == "" || id == null)
-                Response.Redirect("ListaPacientes.aspx") ;
+                Response.Redirect("ListaPacientes.aspx");
             else
                 Response.Redirect("ResumenDeCliente.aspx?id=" + id);
         }

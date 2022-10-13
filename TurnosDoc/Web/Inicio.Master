@@ -27,14 +27,14 @@
             <nav class="row mt-5">
                 <div class="col">
                     <div class="d-flex flex-column flex-lg-row justify-content-lg-evenly">
-                        <a href="Index.aspx" class="btn-skin text-decoration-none">Inicio</a>
-                        <btn class="btn-skin mt-3 mt-lg-0">Consultar turno</btn>
-                        <a href="IniciarSesion.aspx" class="btn-skin text-decoration-none mt-3 mt-lg-0">Iniciar Sesion</a>
+                        <a href="Index.aspx" class="btn-skin text-decoration-none"><i class="bi bi-house-door"></i> Inicio</a>
+                        <a href="ConsultarTurno.aspx" class="btn-skin mt-3 mt-lg-0 text-decoration-none"><i class="bi bi-search"></i> Consultar turno</a>
+                        <a href="IniciarSesion.aspx" class="btn-skin text-decoration-none mt-3 mt-lg-0"><i class="bi bi-person-circle"></i> Iniciar Sesion</a>
                     </div>
                 </div>
             </nav>
         </div>
-        <div>
+        <div class="contenedor">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
@@ -42,9 +42,12 @@
             <footer class="row mt-5 bg-footer">
                 <div class="col">
                     <div class="d-flex flex-column flex-lg-row justify-content-lg-evenly">
-                        <a href="#" class="text-decoration-none btn-footer mt-3 mt-lg-0"><i class="bi bi-instagram"></i> instagram</a>
-                        <a href="#" class="text-decoration-none btn-footer mt-3 mt-lg-0"><i class="bi bi-whatsapp"></i> whatsapp</a>
+                        <a href="https://www.instagram.com/aliciapopoff/" class="text-decoration-none btn-footer mt-3 mt-lg-0"><i class="bi bi-instagram"></i> instagram</a>
+                        <a href="https://wa.me/5491130720970" class="text-decoration-none btn-footer mt-3 mt-lg-0"><i class="bi bi-whatsapp"></i> whatsapp</a>
                     </div>
+                </div>
+                <div class="col-12">
+                    <p class="text-light text-center mt-4">Derechos de autor 2022 Troncoso Leandro, Analista Programador <a href="https://www.linkedin.com/in/leandro-troncoso-ab2b45230/" class="text-decoration-none text-light link-primary"><i class="bi bi-linkedin"></i> LinkedIn.</a></p>
                 </div>
             </footer>
         </div>

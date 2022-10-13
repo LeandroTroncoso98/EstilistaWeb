@@ -11,6 +11,7 @@ namespace Web.Paciente
 {
     public partial class Lista : System.Web.UI.Page
     {
+        public bool vacio { get; set; }
         public List<PacienteNegocio> listaPacientes { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +31,23 @@ namespace Web.Paciente
         {
             dgvClientes.PageIndex = e.NewPageIndex;
             dgvClientes.DataBind();
+        }       
+        protected void btnfiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PacienteNegocio negocio = new PacienteNegocio();
+                dgvClientes.DataSource = negocio.listaFiltrada(txtFiltrar.Text);
+                dgvClientes.DataBind();
+                if (dgvClientes.Rows.Count <= 0)                
+                    vacio = true;               
+                else
+                    vacio = false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

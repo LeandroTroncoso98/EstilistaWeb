@@ -12,7 +12,6 @@
 body {
     background: var(--gris);
 }
-
 .bg-banner {
     background-image: url('../img/bannerxs.png');
     background-repeat: no-repeat;
@@ -31,7 +30,7 @@ body {
 .label-sesion {
     font-family: var(--fuentePrincipal);
     font-weight: 300;
-    color: var(--primario);
+    color: var(--negro);
 }
 
 .bg-footer {
@@ -39,12 +38,7 @@ body {
     padding: 30px;
 }
 
-/*h1,h3{
-    font-family:var(--fuenteTitulo);
-    color:var(--gris);
-    font-weight:700;
-    margin:0 auto;
-}*/
+
 h2 {
     font-family: var(--fuentePrincipal);
     color: var(--primario);
@@ -165,6 +159,25 @@ h1 {
 
     .btn-eliminar:hover {
         background-color: var(--rojo);
+        color: var(--gris);
+        cursor: pointer;
+    }
+
+
+.btn-WhatsApp {
+    background-color: var(--gris);
+    color: #25D366;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    font-family: var(--fuentePrincipal);
+    border: 2px solid #25D366;
+    border-radius: initial;
+    transition: background-color .3s ease-out;
+    padding: 10px;
+}
+    .btn-WhatsApp:hover {
+        background-color: #25D366;
         color: var(--gris);
         cursor: pointer;
     }

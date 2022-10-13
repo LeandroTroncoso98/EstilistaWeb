@@ -70,6 +70,7 @@
     <Content Include="Administracion\FormularioTurno.aspx" />
     <Content Include="Administracion\ResumenDeCliente.aspx" />
     <Content Include="Administracion\ResumenDeTurno.aspx" />
+    <Content Include="ConsultarTurno.aspx" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\style.css" />
     <Content Include="Global.asax" />
@@ -110,6 +111,13 @@
     </Compile>
     <Compile Include="Administracion\ResumenDeTurno.aspx.designer.cs">
       <DependentUpon>ResumenDeTurno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarTurno.aspx.cs">
+      <DependentUpon>ConsultarTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarTurno.aspx.designer.cs">
+      <DependentUpon>ConsultarTurno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

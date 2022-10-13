@@ -5,9 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" ID="scriptManager"></asp:ScriptManager>
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-12">
-                <div class="form-outline mt-4 mt-lg-0 mb-5 d-flex flex-column flex-lg-row justify-content-lg-start">
+                <div class="form-outline mb-5 d-flex flex-column flex-lg-row justify-content-lg-start">
                     <a href="ListaPacientes.aspx" class="btn-skin text-decoration-none"><i class="bi bi-backspace"></i>Regresar</a>
                 </div>
             </div>
@@ -28,11 +28,15 @@
                 </div>
             </div>
             <div class="col-12 col-lg-9 mt-5">
-                <h2 class=" label-sesion text-center mb-3">Historial:</h2>
                 <asp:UpdatePanel runat="server" ID="updatePanel1">
                     <ContentTemplate>
+                        <h2 class=" label-sesion text-center mb-3">Historial:</h2>  
+                        <%if (vacio)
+                            { %>
+                        <h2 class="text-center mt-5"><i class="bi bi-emoji-frown-fill"></i> Paciente sin turnos.</h2>
+                        <%} %>
                         <div class="table-responsive">
-                            <asp:GridView ID="dgvPacienteSeleccionado" runat="server" CssClass="table table-condensed table-hover mt-1 mb-5 border-0" HeaderStyle-CssClass="text-letra bg-table-header text-uppercase" RowStyle-CssClass="table-light text-letra" AutoGenerateColumns="false" DataKeyNames="Id" OnPageIndexChanging="dgvPacienteSeleccionado_PageIndexChanging" AllowPaging="true" PageSize="5">
+                            <asp:GridView ID="dgvPacienteSeleccionado" runat="server" CssClass="table table-condensed table-hover mt-1 mb-5 border-0" HeaderStyle-CssClass="text-letra bg-table-header text-uppercase" RowStyle-CssClass="table-light text-letra" AutoGenerateColumns="false" DataKeyNames="Id" OnPageIndexChanging="dgvPacienteSeleccionado_PageIndexChanging" OnSelectedIndexChanged="dgvPacienteSeleccionado_SelectedIndexChanged" AllowPaging="true" PageSize="5">
                                 <Columns>
                                     <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
                                     <asp:BoundField HeaderText="Horario" DataField="Hora" />
